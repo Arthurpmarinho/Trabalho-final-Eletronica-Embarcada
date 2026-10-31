@@ -1,0 +1,9 @@
+# MPLAB X build output
+Trabalho_final.X/build/
+Trabalho_final.X/dist/
+Trabalho_final.X/nbproject/private/
+Trabalho_final.X/defmplabxtrace.log*
+*.d
+*.p1
+*.i
+*.o
