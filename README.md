@@ -1,3 +1,19 @@
+# Bluetooth-controlled 4-floor elevator (PIC16F1827)
+
+**[Video demo](https://youtu.be/C-G2z3W_Hf0)** · Embedded Electronics final project, University of Brasília, 2025/2 · Arthur Marinho, Fernando de Melo, Gabriel Celestino
+
+Firmware in C for a scale elevator with four floors. Calls arrive over Bluetooth, a SCAN scheduler serves them in the direction of travel, and the elevator streams telemetry back over UART.
+
+- **Scheduling:** SCAN algorithm with up to 5 queued requests and a 5-state machine (idle, up, down, door wait, reversal delay)
+- **Motor control:** PWM through a TB6612FNG H-bridge, position and speed from an optical encoder, floor detection with A3144 Hall sensors
+- **Telemetry:** CSV packets over UART and an HC-06 Bluetooth module (floor, target, motor state, position in mm, speed, LM35 temperature), plus a Python viewer in [`elevator1x4`](elevator1x4)
+- **Display:** 8x8 LED matrix on a MAX7219 over SPI showing the current floor, direction and pending calls
+- **Tools:** MPLAB X, XC8, MCC, logic analyzer for PWM checks
+
+Full documentation in Portuguese below.
+
+---
+
 # Controle de Elevador de 4 Andares por Bluetooth
 
 Este projeto de elevador foi desenvolvido para a disciplina de Eletrônica Embarcada 2025/2 da Universidade de Brasília, pelos alunos Arthur Marinho, Fernando de Melo e Gabriel Celestino. O principal objetivo deste projeto foi desenvolver um firmware para um elevador de 4 andares, utilizando um algoritmo de escalonamento SCAN para otimização do percurso. Além disso, o projeto conta com telemetria em tempo real via UART e interface visual por meio de uma Matriz de LEDs.
